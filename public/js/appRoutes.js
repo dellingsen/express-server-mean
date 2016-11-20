@@ -5,12 +5,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	// home page
 	.when('/', {
 		templateUrl: 'views/home.html',
-		controller: 'MainController',
+		controller: 'MainCtrl',
         loginRequired: true //
     })
 	.when('/users', {
 	  templateUrl: 'views/user.html',
-	  controller: 'UserController',
+	  controller: 'UserCtrl',
       loginRequired: true //
     })
     .when('/adduser', {

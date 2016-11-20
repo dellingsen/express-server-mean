@@ -1,10 +1,11 @@
-var userController = angular.module('UserCtrl', []);
+var userController = angular.module('UserController', []);
 
 // The UserController function is a standard JavaScript object constructor.
 // AngularJS will invoke UserController with a $scope and UserSrv object
 // The scope is the binding part between the HTML (view) and the JavaScript (controller)
 // $scope object holds all application variables and functions
-userController.controller('UserController', function($scope, UserSrv)
+// Note: Use an array of Strings so Angular can resolve dependencies...
+userController.controller('UserCtrl', ['$scope', 'UserSrv', function($scope, UserSrv)
 {
   console.log('In UserController....calling UserService now.')
 
@@ -20,7 +21,7 @@ userController.controller('UserController', function($scope, UserSrv)
     $scope.errorMsg = {message: 'Error: no users were found.'};
   });
 
-})
+}])
 
 
 userController.controller('AddUserController', function($scope, $location, UserSrv)

@@ -19,9 +19,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-var router = express.Router();
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // route middleware that will happen on every request
 app.use(function(req, res, next) {
@@ -36,41 +35,41 @@ app.use(function(req, res, next) {
 //Users REST API
 
 // Create endpoint /users for POST
-app.post('/users', function(req, res) {
+app.post('/api/users', function(req, res) {
   users.createUser(req.body, function (out) {
     res.json(out)
   })
 })
 
 // Create endpoint /users for GET
-app.get('/users', function(req, res) {
+app.get('/api/users', function(req, res) {
   users.getUsers(function (out) {
     res.json(out)
   })
 })
 
 // Create endpoint /users/:user_id for PUT
-app.put('/users/:userid', function(req, res) {
+app.put('/api/users/:userid', function(req, res) {
   users.putUser(req.params.userid, function (out) {
     res.json(out)
   })
 })
 
 // Create endpoint /users/:user_id for GET
-app.get('/users/:userid', function(req, res) {
+app.get('/api/users/:userid', function(req, res) {
   users.getUser(req.params.userid, function (out) {
     res.json(out)
   })
 })
 
 // Create endpoint /users/:user_id for DELETE
-app.delete('/users/:userid', function(req, res) {
+app.delete('/api/users/:userid', function(req, res) {
   users.deleteUser(req.params.userid, function (out) {
     res.json(out)
   })
 })
 
-app.delete('/users', function(req, res) {
+app.delete('/api/users', function(req, res) {
   users.deleteAll(function (out) {
     res.json(out)
   })
